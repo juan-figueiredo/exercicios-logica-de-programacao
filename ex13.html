@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <title>Lógida de Programação</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #0f0f0f;
+    background-image: url("https://wallpapersmug.com/download/3840x2160/14b814/mountain-minimalist-night-artwork.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: "Poppins", sans-serif;
+}
+
+    .container {
+      width: 50%;
+      height: 40rem;
+      display: flex;
+      background: rgba(255, 255, 255, 0.21);
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.54);
+      color: rgb(255, 174, 0);
+      border-radius: 8px;
+      padding: 1rem;
+      padding-bottom:1rem;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-shadow: 0 0 30px #ffffff;
+      overflow: auto;
+    }
+    .container h3{
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      position: relative;
+      bottom: 2rem;
+      
+    }
+    .container button{
+      align-items: flex-end;
+      justify-content: center;
+      align-self: center;
+      margin: .5rem 0;
+    }
+
+    .container #input, #input2, #input3, #input4{
+      text-align: center;
+      color: black;
+      margin: 1rem 0;
+      width: 600px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h3>Lógica de Programação (JS)</h3>
+    <h4>Insira os saldos para obter informações da conta</h4>
+    <input type="number" id="input" class="form-control text-primary"  placeholder="Digite o número da conta" style="-webkit-appearance: none; -moz-appearance: textfield;">
+    <input type="number" id="input2" class="form-control text-primary"  placeholder="Digite o saldo da conta" style="-webkit-appearance: none; -moz-appearance: textfield;">
+    <input type="number" id="input3" class="form-control text-primary"  placeholder="Digite o saldo em débido" style="-webkit-appearance: none; -moz-appearance: textfield;">
+    <input type="number" id="input4" class="form-control text-primary"  placeholder="Digite o saldo em crédito" style="-webkit-appearance: none; -moz-appearance: textfield;">
+    <p id="result"></p>
+    <button type="button" onclick="mostrar()" class="btn btn-primary">Clique aqui para mostrar</button>
+    <button type="button" onclick="limpar()" class="btn btn-danger">Clique aqui para limpar </button>
+
+  </div>
+
+  <script>
+
+    function mostrar(){
+
+    const numeroDaConta = parseInt(document.getElementById("input").value)
+    const saldo = parseInt(document.getElementById("input2").value)
+    const debito = parseInt(document.getElementById("input3").value)
+    const credito = parseInt(document.getElementById("input4").value)
+    
+    const resultado = document.getElementById("result")
+
+    const saldoTotal = ((saldo - debito) + credito)
+
+    if(saldoTotal >= 0){
+
+      resultado.innerHTML = `
+      O seu saldo é de: R$${saldoTotal} reais. | Saldo positivo.`
+
+    }else{
+      resultado.innerHTML = `O seu saldo é de: R$${saldoTotal} reais. | Saldo negativo.`
+
+    }
+
+  }
+
+  function limpar(){
+    const limparInput1 = document.getElementById("input").value = ""
+    const limparInput2 = document.getElementById("input2").value = ""
+    const limparInput3 = document.getElementById("input3").value = ""
+    const limparInput4 = document.getElementById("input4").value = ""
+
+    const limparParagrafo = document.getElementById("result").innerHTML = ""
+  }
+  </script>
+</body>
+</html>
